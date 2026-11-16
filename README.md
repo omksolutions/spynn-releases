@@ -13,7 +13,8 @@ A rebuild on DirectX 12, with a main menu, match setup, hosting and joining from
 ### Requirements
 
 - Windows 10 (version 1909 or later) or Windows 11, 64-bit.
-- A DirectX 12 graphics card with a current driver. The game needs Shader Model 6.6 and enhanced barriers, which most cards of the last several years have. Some older built-in Intel graphics may not. If yours falls short, the game says what is missing; updating the graphics driver from Intel, NVIDIA or AMD is what most often fixes it.
+- A DirectX 12 graphics card with a current driver, with Shader Model 6.6, which most cards of the last several years have, Intel's built-in graphics included. If yours falls short, the game says what is missing. Updating the graphics driver is what most often fixes it: from Intel, NVIDIA or AMD, or on a Surface or similar laptop through Windows Update (including its optional updates).
+- Built-in graphics will run it, but slower than a graphics card: on a laptop with both, it uses the faster.
 - A keyboard, or a controller (Xbox-style). A controller is no longer required.
 
 ### Getting started
@@ -109,4 +110,3 @@ The score and time limits are set in the server's `server-config.json`; restart 
 - A graphics card capable of OpenGL 4.6.
 - A working PC-compatible gamepad.
 - Click **Allow** if Windows asks for a firewall entry.
-- Some PCs or antivirus programs may wrongly flag the programs as malware; ignore the warning or add them to a safe list if needed.
