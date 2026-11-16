@@ -2,25 +2,25 @@
 
 A 5 v 5 physics football game for Windows: play against the computer, with friends over a network, or with several controllers at one PC.
 
-Downloads are on the [Releases](../../releases) page, the newest at the top. The two versions below are separate games: 0.1 and 0.2 can't play together.
+Downloads are on the [Releases](../../releases) page, the newest at the top. Version 0.1 is the original game; 0.2 and later are a rebuild. Everyone playing together needs the same version.
 
 ---
 
 ## Version 0.3 (new)
 
-A rebuild on DirectX 12, with a main menu, match setup, hosting and joining from the menus, and up to ten people in a match.
+A rebuild on DirectX 12, with a main menu, match setup, hosting and joining from the menus, and up to ten people in a match. New since 0.2: a full-time screen with a rematch, notices of who has come and gone, and a server that starts the next match by itself.
 
 ### Requirements
 
 - Windows 10 (version 1909 or later) or Windows 11, 64-bit.
 - A DirectX 12 graphics card with a current driver, with Shader Model 6.6, which most cards of the last several years have, Intel's built-in graphics included. If yours falls short, the game says what is missing. Updating the graphics driver is what most often fixes it: from Intel, NVIDIA or AMD, or on a Surface or similar laptop through Windows Update (including its optional updates).
 - Built-in graphics will run it, but slower than a graphics card: on a laptop with both, it uses the faster.
-- A keyboard, or a controller (Xbox-style). A controller is no longer required.
+- A keyboard, or a controller (Xbox-style).
 
 ### Getting started
 
-1. Download `Spynn.zip` from the 0.2 release and **unzip it**. Run `Spynn.exe` from the unzipped folder, not from inside the zip. Nothing needs installing.
-2. Windows may say it protected your PC from an unrecognised app, because the game isn't signed: choose **More info**, then **Run anyway**. Some antivirus programs may flag it for the same reason.
+1. Download `Spynn.zip` from the newest release. **Before unzipping it, unblock it** so Windows doesn't warn about the game: see [Windows protected your PC](#windows-protected-your-pc) below.
+2. Unzip it, and run `Spynn.exe` from the unzipped folder, not from inside the zip. Nothing needs installing.
 3. The game opens fullscreen. **Alt+Enter** or **F11** switches to a window and back.
 
 ### Controls
@@ -38,7 +38,7 @@ The menus use the keyboard (arrow keys, Enter, Escape, Tab) or the mouse.
 Choose **Play**, then set up the match:
 
 - **Your name**: shown over your player.
-- **Match length**: 3, 5, 10, 15, 20 or 30 minutes, or 1 hour.
+- **Match length**: 3, 5, 10, 15, 20 or 30 minutes, or 1 hour. A match also ends when a team scores 5.
 - **Computer**: Easy, Normal or Hard.
 - **Your team**: Red or Blue.
 
@@ -55,7 +55,11 @@ Then press Escape: the pause menu shows where friends join.
 
 **To join:** choose **Join a match**, type the host's address (and the port, and password if there is one), your name, and Join. The line under the boxes says how it went.
 
-A match holds up to ten people; the computer plays every seat nobody has. If someone drops out, the computer plays for them until they rejoin. A match with others in it carries on while you're paused.
+A match holds up to ten people; the computer plays every seat nobody has. If someone drops out, the computer plays for them until they rejoin, and a notice says who has come and gone. A match with others in it carries on while you're paused.
+
+### At full time
+
+A panel shows the result. **Rematch** plays again from kick-off with the same teams and settings; **Leave match** goes back to the main menu. In someone else's match the host decides on a rematch, and on a server the next match starts by itself after 30 seconds.
 
 ### Several players at one PC
 
@@ -63,14 +67,20 @@ In a match you started or are hosting, anyone with another controller presses **
 
 ### The server (optional)
 
-`SpynnServer.exe`, in the same folder, hosts a match with no window, for a PC that only hosts. Run it from a command prompt in that folder; everyone, including you, then joins it with **Join a match**. Ctrl+C stops it.
+`SpynnServer.exe`, in the same folder, hosts matches with no window, for a PC that only hosts. Run it from a command prompt in that folder; everyone, including you, then joins it with **Join a match**. Ctrl+C stops it.
 
 - `--at <port>` where it listens (7777 unless told), or `--at <address:port>` for one address of the PC only.
 - `--ai <easy | normal | hard>` how well the computer plays; two levels, as in `--ai "easy hard"`, for each team.
 - `--password <word>` a private match.
 - `--seed <number>` a different match.
 
-The server doesn't ask the router to open its port: for play over the internet, forward UDP port 7777 by hand. Its matches last 10 minutes (`matchSeconds` in `assets\Data\Balance.json`).
+The server doesn't ask the router to open its port: for play over the internet, forward UDP port 7777 by hand.
+
+Its matches are set in `assets\Data\Balance.json`, which it reads again before each new match, so you can change them while it runs:
+
+- `matchSeconds`: how long a match lasts (600, ten minutes).
+- `goalLimit`: the goals that win it (5; 0 for none).
+- `rematchSeconds`: how long after full time the next match starts (30; 0 never to start one).
 
 ### Known issues
 
@@ -78,7 +88,19 @@ The server doesn't ask the router to open its port: for play over the internet, 
 - There is no sound yet.
 - Controllers can't move through the menus yet; use the keyboard or mouse there.
 - Your name isn't remembered between runs, and there's no settings screen yet.
-- At full time the match stops: press Escape, then Leave match.
+
+### Windows protected your PC
+
+> [!IMPORTANT]
+> **Unblock the zip before you unzip it**, and Windows won't warn about the game at all:
+>
+> 1. Right-click `Spynn.zip` and choose **Properties**.
+> 2. On the **General** tab, tick **Unblock** (at the bottom, beside Security) and click **OK**.
+> 3. Now unzip it and run `Spynn.exe`.
+
+If you've already unzipped it, Windows says it protected your PC when you run the game: choose **More info**, then **Run anyway**. Or delete the unzipped folder, unblock the zip, and unzip it again.
+
+Why it happens: Windows checks programs downloaded from the internet against publishers it knows. Spynn isn't signed with a paid certificate, so it shows as an unknown publisher, and every new version starts out unknown. Some antivirus programs may flag it for the same reason; if yours does, add the game's folder to its allowed list.
 
 ### If something goes wrong
 
@@ -110,3 +132,4 @@ The score and time limits are set in the server's `server-config.json`; restart 
 - A graphics card capable of OpenGL 4.6.
 - A working PC-compatible gamepad.
 - Click **Allow** if Windows asks for a firewall entry.
+- Some PCs or antivirus programs may wrongly flag the programs as malware; ignore the warning or add them to a safe list if needed.
