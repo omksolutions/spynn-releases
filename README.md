@@ -100,7 +100,7 @@ Its matches are set in `assets\Data\Balance.json`, which it reads again before e
 
 If you've already unzipped it, Windows says it protected your PC when you run the game: choose **More info**, then **Run anyway**. Or delete the unzipped folder, unblock the zip, and unzip it again.
 
-Why it happens: Windows checks programs downloaded from the internet against publishers it knows. Spynn isn't signed with a paid certificate, so it shows as an unknown publisher, and every new version starts out unknown. Some antivirus programs may flag it for the same reason; if yours does, add the game's folder to its allowed list.
+Why it happens: Windows checks programs downloaded from the internet against publishers it knows. Spynn isn't (yet) signed with a paid certificate, so it shows as an unknown publisher, and every new version starts out unknown. Some antivirus programs may flag it for the same reason; if yours does, add the game's folder to its allowed list.
 
 ### If something goes wrong
 
