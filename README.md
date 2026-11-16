@@ -6,7 +6,7 @@ Downloads are on the [Releases](../../releases) page, the newest at the top. The
 
 ---
 
-## Version 0.2 (new)
+## Version 0.3 (new)
 
 A rebuild on DirectX 12, with a main menu, match setup, hosting and joining from the menus, and up to ten people in a match.
 
